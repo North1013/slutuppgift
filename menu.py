@@ -37,12 +37,17 @@ def create_user(csv_file):
         password = hashlib.sha1(input("password: ").encode('utf-8')).hexdigest()
         department = input("department: ")
         username = first_name[0] + last_name + str(randint(0, 10))
+        
         with open(csv_file, 'a') as file:
             writer = csv.writer(file, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
             writer.writerow([first_name, last_name, email, password, department, username])
-        line_break(length)
-        normal([first_name, last_name, email, password, department, username], length)
-        line_break(length)
+        
+        print(line_break(length))
+        print(normal(("First Name", "Last Name", "Email", "Password", "Department", "Username"), length))
+        print(line_break(length))
+        print(normal([first_name, last_name, email, password, department, username], length))
+        print(line_break(length))
+        
         choice = input("Create another user? write y/yes to create another: ")
 
 def show_content(csv_file):
